@@ -1,6 +1,6 @@
 const Album = (props) => {
     return (
-        <h4>Type: {props.album_type}</h4>
+        <p>Type: {props.album_type}</p>
     );
 };
 

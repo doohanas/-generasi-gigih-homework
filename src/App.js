@@ -1,12 +1,13 @@
 import './App.css';
 import data from './data/data';
-import Image from './images/images';
-import TitleName from './songTitle/songTitle';
-import Album from './album/album';
-import ArtistName from './artists/artists';
+import Image from './playlist/images/images';
+import TitleName from './playlist/songTitle/songTitle';
+import Album from './playlist/album/album';
+import ArtistName from './playlist/artists/artists';
 import Button from './button/button';
 
 function App() {
+
   return (
     <div className="App">
       <h1> My Playlist </h1>
@@ -16,7 +17,7 @@ function App() {
           <TitleName name={data.album.name} />
           <Album album_type={data.album.album_type} />
           <ArtistName name={data.artists[0].name} />
-         <Button />
+          <Button />
         </div>
       </div>
     </div>
