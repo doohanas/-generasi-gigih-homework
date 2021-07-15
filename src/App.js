@@ -18,20 +18,6 @@ function App() {
           <ArtistName name={data.artists[0].name} />
          <Button />
         </div>
-        <div className="Playlist-Card">
-          <Image url={data.album.images[1].url} />
-          <TitleName name={data.album.name} />
-          <Album album_type={data.album.album_type} />
-          <ArtistName name={data.artists[0].name} />
-         <Button />
-        </div>
-        <div className="Playlist-Card">
-          <Image url={data.album.images[1].url} />
-          <TitleName name={data.album.name} />
-          <Album album_type={data.album.album_type} />
-          <ArtistName name={data.artists[0].name} />
-         <Button />
-        </div>
       </div>
     </div>
   );
