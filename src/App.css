@@ -1,22 +1,14 @@
 * {
   font-family: 'Roboto', sans-serif;
+  margin: 0px;
+  padding: 0px;
 }
 body {
-  background-color: #424242;
+  width: 100vw;
 }
 .App {
-    text-align: center;
-    background-color: #424242;
-}
-.Playlist {
-  display: flex;
-}
-.Playlist-Card {
-  margin: 10px;
-  background-color: #FFB2B2;
-}
-img {
-  border-radius: 50%;
+    background-color: orange;
+    width: 100vw;
 }
 button {
   border-radius: 50%;

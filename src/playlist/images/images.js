@@ -1,6 +1,6 @@
-const Image = ({url}) => {
+const Image = (props) => {
     return (
-        <img src={url} alt="Queen.jpg"></img>
+        <img src={props.url} alt="gambar"></img>
     );
 };
 
