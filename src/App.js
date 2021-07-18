@@ -2,18 +2,13 @@ import './App.css';
 import Header from './header/header';
 import PlaylistCard from './playlist/playlist-card';
 
-function App() {
-   
+function App() { 
   return (
     <div className="App">
         <Header/>
-
-        {/* {imageUrls};
-          {titleNames};
-          {albums};
-          {artists};
-          {buttons}; */}
+        <div className="body">
           <PlaylistCard />
+        </div> 
     </div>
   );
 };

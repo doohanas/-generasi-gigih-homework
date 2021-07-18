@@ -1,6 +1,7 @@
+import "./button.css";
 const Button = () => {
     return (
-        <button type="button">Select</button>
+        <button type="button" onClick={() => { alert("Done")} }>Select</button>
     );
 };
 
