@@ -47,6 +47,7 @@ function App() {
                 api_key: process.env.REACT_APP_CLIENT_ID,
                 q: keyword,
                 type: "track",
+                limit: 12
                
             },
         }).then((response) => {
@@ -57,7 +58,7 @@ function App() {
     };
   
   const handleSetSearchPlaylist = (event) => {
-        setKeyword(hadleSearchPlaylist(event.target.value))
+        setKeyword(event.target.value)
   }
 
   const showTrackPage = () => {
@@ -116,7 +117,7 @@ function App() {
       }
     }, [token]);
 
-  // console.log(data)
+  console.log(data)
   return (
     <div className="App">
       <Header />
