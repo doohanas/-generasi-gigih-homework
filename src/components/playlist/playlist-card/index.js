@@ -1,9 +1,9 @@
-import "../playlist-card/playlist-card.css";
-import data from '../../data/data';
-import Image from '../../playlist/images/images';
-import TitleName from '../../playlist/songTitle/songTitle';
-import Album from '../../playlist/album/album';
-import ArtistName from '../../playlist/artists/artists';
+import "./playlist-card.css";
+import data from '../../../data/data';
+import Image from '../images/images';
+import TitleName from '../songTitle/songTitle';
+import Album from '../album/album';
+import ArtistName from '../artists/artists';
 import Button from '../../button/button';
 
 function PlaylistCard () {
