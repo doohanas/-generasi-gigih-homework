@@ -1,9 +1,9 @@
-.playlist {
+.tracks {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.playlist-card {
+.track-card {
   background-color: #424242;
   width: 300px;
   height: auto;
@@ -14,20 +14,20 @@
   box-shadow: 0 25px 25px rgba(0,0,0,.5);
   transition: .5s ease-out;
 }
-.playlist-card:hover {
+.track-card:hover {
    transform: scale(1.05);
 }
-.playlist-card-text {
+.track-card-text {
   font-size: 1rem;
   line-height: 25px;
   color: white;
 }
-.playlist-card-image {
+.track-card-image {
   padding-bottom: 5px;
 }
-.playlist-card-image > img {
+.track-card-image > img {
   border-radius: 50%;
 }
-.playlist-card-text > p {
+.track-card-text > p {
   margin: 5px;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./button.css";
 
 const Button = () => {
@@ -6,7 +6,7 @@ const Button = () => {
 
     const handleBtn = () => { btn === "Select" ? setBtn('Deselect') : setBtn('Select') };
     return (
-        <button className="btn" type="button" onClick={handleBtn}> {btn}</button>
+        <button className="btn" onClick={handleBtn}>{btn}</button>
     );
 };
 
