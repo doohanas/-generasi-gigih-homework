@@ -1,0 +1,11 @@
+.userProfile {
+    padding-left: 25px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.userProfile > img {
+    border-radius: 100%;
+}
+.userProfile > p, h1 {
+    padding-left: 75px;
+}
