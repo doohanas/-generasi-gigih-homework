@@ -1,4 +1,3 @@
-//the Redux logic for the access token feature
 import { createSlice } from "@reduxjs/toolkit";
 
 export const tokenState = createSlice({

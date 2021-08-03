@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "./playlist-card.css";
 
 function TracksCard({ track }) {
@@ -29,4 +30,9 @@ function TracksCard({ track }) {
     </div>
   );
 }
+
+TracksCard.propTypes = {
+  track: PropTypes.node.isRequired,
+};
+
 export default TracksCard;

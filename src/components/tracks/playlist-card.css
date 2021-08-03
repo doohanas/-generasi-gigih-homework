@@ -11,11 +11,11 @@
   padding: 10px;
   text-align: center;
   border-radius: 10px;
-  box-shadow: 0 25px 25px rgba(0,0,0,.5);
-  transition: .5s ease-out;
+  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.5);
+  transition: 0.5s ease-out;
 }
 .track-card:hover {
-   transform: scale(1.05);
+  transform: scale(1.05);
 }
 .track-card-text {
   font-size: 1rem;

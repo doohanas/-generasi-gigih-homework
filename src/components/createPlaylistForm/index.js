@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../button/button.css";
 import "./form.css";
 
@@ -6,7 +7,7 @@ const NewPlaylist = ({
   submitNewPlaylistForm,
   getTitleValue,
   getDescriptionValue,
-  handleCreateNewPlaylist
+  handleCreateNewPlaylist,
 }) => {
   return (
     <div className="container-newPlaylist">
@@ -40,6 +41,13 @@ const NewPlaylist = ({
       </form>
     </div>
   );
+};
+
+NewPlaylist.propTypes = {
+  submitNewPlaylistForm: PropTypes.node.isRequired,
+  getTitleValue: PropTypes.node.isRequired,
+  getDescriptionValue: PropTypes.node.isRequired,
+  handleCreateNewPlaylist: PropTypes.node.isRequired,
 };
 
 export default NewPlaylist;
