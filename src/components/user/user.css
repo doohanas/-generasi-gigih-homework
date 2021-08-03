@@ -1,11 +1,11 @@
 .userProfile {
-    padding-left: 25px;
-    margin-top: 5px;
-    margin-bottom: 20px;
+  margin: 0px 50px;
+  padding-bottom: 20px;
+  text-align: center;
 }
 .userProfile > img {
-    border-radius: 100%;
-}
-.userProfile > p, h1 {
-    padding-left: 75px;
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+  margin: 0px 50px;
 }

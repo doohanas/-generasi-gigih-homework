@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTokenAction, selectToken } from "./redux/token/sliceToken";
 import {
-  CLIENT_ID,
-  AUTHORIZE_URL,
-  REDIRECT_URL_AFTER_LOGIN,
-  REACT_APP_SCOPES,
-} from "./data/spotifyAuth";
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+
 import axios from "axios";
 
 import "./components/button/button.css";
@@ -21,27 +22,14 @@ import SearchData from "./components/searchInput";
 import UserProfile from "./components/user";
 
 const HomePage = () => {
-  const [data, setData] = useState([]);
+  const [dataTrack, setDataTrack] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [userID, setUserID] = useState("");
-  const [selectedTracks, setSelectedTracks] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
   const accessToken = useSelector(selectToken);
   const dispatch = useDispatch();
-
-  // authentication page
-  const handleLogin = () => {
-    window.location = `${AUTHORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${REACT_APP_SCOPES}&response_type=token&show_dialog=true&state=123`;
-  };
-
-  // Login Page
-  const loginButton = () => {
-    if (!accessToken) {
-      return <Login handleLogin={handleLogin} />;
-    }
-  };
 
   // Get Token
   const tokenFromURL = (hash) => {
@@ -56,7 +44,20 @@ const HomePage = () => {
 
     return paramsSplitUp;
   };
-  console.log(accessToken);
+
+  // To set token from URL into accessToken state
+  useEffect(() => {
+    if (window.location.hash) {
+      const { access_token, expires_in, token_type } = tokenFromURL(
+        window.location.hash
+      );
+      console.log({ access_token, expires_in, token_type });
+      dispatch(getTokenAction.getToken(access_token));
+    }
+    if (accessToken) {
+      handleGetUserId();
+    }
+  }, [accessToken]);
 
   // Handle search API
   const hadleSearchPlaylist = async () => {
@@ -75,7 +76,7 @@ const HomePage = () => {
         },
       })
       .then((response) => {
-        setData(response.data.tracks.items);
+        setDataTrack(response.data.tracks.items);
       })
       .catch((error) => {
         console.log(error);
@@ -98,82 +99,59 @@ const HomePage = () => {
     }
   };
 
-  // Handle Search Playlist
-  const handleSetSearchPlaylist = (event) => {
-    setKeyword(event.target.value);
-  };
-
-  //handle create playlist
-  console.log(userID);
-  const handleCreatePlaylist = async () => {
-    const userId = userID.id;
-    try {
-      await axios.post(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-        data: {
+  // console.log(userID);
+  const userId = userID.id;
+  const handleCreateNewPlaylist = async () => {
+    await axios
+      .post(
+        `https://api.spotify.com/v1/users/${userId}/playlists`,
+        {
           name: title,
           description: description,
           public: false,
           collaborative: false,
         },
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    } catch (error) {
-      console.error(error);
-    }
   };
 
-  // handle submit playlist form
-  const handleSubmitNewPlaylistForm = (e) => {
-    e.preventDefault();
-    handleCreatePlaylist();
+  //handle submit Form CreatePlaylistForm
+  const submitNewPlaylistForm = (event) => {
+    event.preventDefault();
+    handleCreateNewPlaylist();
   };
 
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
+  //handle get title value from form
+  const getTitleValue = (event) => {
+    setTitle(event.target.value);
   };
 
-  const handleDescription = (e) => {
-    setDescription(e.target.value);
+  // handle get description value from form
+  const getDescriptionValue = (event) => {
+    setDescription(event.target.value);
   };
 
-  // get uri to push tracks in a playlist
-  const pushToSelectedTracks = (uri) => {
-    const currentTracks = selectedTracks;
-    currentTracks.push(uri);
-    setSelectedTracks(currentTracks);
-  };
-
-  // delete selected track
-  const deleteFromSelectedTracks = (uri) => {
-    const currentTracks = selectedTracks;
-    for (let i = 0; i < selectedTracks.length; i++) {
-      if (currentTracks[i] === uri) {
-        currentTracks.splice(i, 1);
-      }
-    }
-    setSelectedTracks(currentTracks);
-  };
-
-  // Select track button state
-  const getSelectTrackButtonState = (uri) => {
-    let status = false;
-    for (let i = 0; i < selectedTracks.length; i++) {
-      if (selectedTracks[i] === uri) {
-        status = true;
-      }
-    }
-    return status;
+  // Handle Search Playlist
+  const handleSetSearchPlaylist = (event) => {
+    setKeyword(event.target.value);
   };
 
   // To show user profile
   const showUserProfile = () => {
     return userID ? <UserProfile userId={userID} /> : null;
   };
-  //console.log(userID);
 
   // To Show Track Page
   const showTrackPage = () => {
@@ -182,12 +160,11 @@ const HomePage = () => {
         <div>
           <div>{showUserProfile()}</div>
           <NewPlaylist
-            handleSubmitNewPlaylistForm={handleSubmitNewPlaylistForm}
-            handleTitle={handleTitle}
-            handleDescription={handleDescription}
-            handleCreatePlaylist={handleCreatePlaylist}
+            submitNewPlaylistForm={submitNewPlaylistForm}
+            getTitleValue={getTitleValue}
+            getDescriptionValue={getDescriptionValue}
+            handleCreateNewPlaylist={handleCreateNewPlaylist}
           />
-          <br /> <br />
           <div>
             <h2>Put selected Tracks in here</h2>
           </div>
@@ -199,21 +176,10 @@ const HomePage = () => {
             />
           </div>
           <div className="tracks">
-            {data !== null &&
-              data.map((track) => {
-                const buttonState = getSelectTrackButtonState(track.uri);
-                return (
-                  <TracksCard
-                    key={track.id}
-                    data={track}
-                    uri={track.uri}
-                    buttonState={buttonState}
-                    pushToSelectedTracks={pushToSelectedTracks}
-                    deleteFromSelectedTracks={deleteFromSelectedTracks}
-                  />
-                );
+            {dataTrack != null &&
+              dataTrack.map((track) => {
+                return <TracksCard key={track.id} track={track} />;
               })}
-            ;
           </div>
         </div>
       );
@@ -221,27 +187,21 @@ const HomePage = () => {
     }
   };
 
-  // To set token from URL into accessToken state
-  useEffect(() => {
-    if (window.location.hash) {
-      const { access_token, expires_in, token_type } = tokenFromURL(
-        window.location.hash
-      );
-      console.log({ access_token, expires_in, token_type });
-      dispatch(getTokenAction.getToken(access_token));
-    }
-    if (accessToken) {
-      handleGetUserId();
-    }
-  }, [accessToken]);
-
   return (
-    <>
+    <Router>
       <div className="body">
-        {loginButton()}
-        {showTrackPage()}
+        <Switch>
+          <Route exact path="/create-playlist">
+            {!accessToken && <Redirect to="/"/>}
+            {showTrackPage()}
+          </Route>
+          <Route exact path="/">
+            {accessToken && <Redirect to="/create-playlist"/>}
+            <Login />
+          </Route>
+        </Switch>
       </div>
-    </>
+    </Router>
   );
 };
 

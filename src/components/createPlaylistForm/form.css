@@ -1,0 +1,10 @@
+.container-newPlaylist {
+    margin: 0px 50px;
+    text-align: center;
+}
+#formCreatePlaylist > h2 {
+    padding-bottom: 10px;
+}
+.create-button {
+    padding-top: 10px;
+}

@@ -1,3 +1,4 @@
+import "../button/button.css";
 const SearchData = ({ placeholder, onChange, onClick }) => {
   return (
     <>
@@ -7,7 +8,7 @@ const SearchData = ({ placeholder, onChange, onClick }) => {
         onChange={onChange}
         placeholder={placeholder}
       ></input>
-      <button className="search-input" onClick={onClick}>
+      <button className="btn" onClick={onClick}>
         Search
       </button>
     </>

@@ -1,38 +1,39 @@
 import React from "react";
 import "../button/button.css";
+import "./form.css";
 
 const NewPlaylist = ({
-  handleSubmitNewPlaylistForm,
-  handleCreatePlaylist,
-  handleTitle,
-  handleDescription,
+  submitNewPlaylistForm,
+  getTitleValue,
+  getDescriptionValue,
+  handleCreateNewPlaylist
 }) => {
-  
   return (
-    <div className="newPlaylist-form">
-      <form id="form" className="" onSubmit={handleSubmitNewPlaylistForm}>
+    <div className="container-newPlaylist">
+      <form id="formCreatePlaylist" onSubmit={submitNewPlaylistForm}>
         <h2>Create New Playlist</h2>
-        <label htmlFor="playlistTitle">Title</label>
+        <label htmlFor="playlistTitle">Title: </label>
         <input
           name="playlistTitle"
+          onChange={getTitleValue}
           type="text"
           minLength="10"
-          onChange={handleTitle}
           required
         />
-        <br />
-        <br />
-        <label htmlFor="playlistDescription">Description</label>
+        <label htmlFor="playlistDescription">Description: </label>
         <input
           name="playlistDescription"
+          onChange={getDescriptionValue}
           type="text"
           minLength="20"
-          onChange={handleDescription}
           required
         />
-        <div>
-          <br />
-          <button onClick={handleCreatePlaylist} className="btn" type="submit">
+        <div className="create-button">
+          <button
+            className="btn"
+            onClick={handleCreateNewPlaylist}
+            type="submit"
+          >
             Create
           </button>
         </div>
