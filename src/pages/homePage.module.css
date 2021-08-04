@@ -1,0 +1,18 @@
+.container_grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.grid_item_one {
+  width: 300px;
+  /* background-color: rgba(95, 78, 46, 0.76); */
+}
+.grid_item_two {
+  width: auto;
+}
+/* *Container for tracks  */
+.tracks {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

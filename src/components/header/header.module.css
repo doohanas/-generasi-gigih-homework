@@ -1,10 +1,10 @@
 .header {
   background-color: #424242;
   width: 100vw;
-  height: 80px;
-  color: white;
+  height: 100px;
+  color: #fff;
 }
 .header > h2 {
-  padding: 15px;
+  padding: 35px 15px;
   font-size: 1.5rem;
 }

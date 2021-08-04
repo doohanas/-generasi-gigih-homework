@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTokenAction, selectToken } from "./redux/token/sliceToken";
+import { getTokenAction, selectToken } from "../redux/token/sliceToken";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
-
 import axios from "axios";
 
-import "./components/button/button.css";
-import "./components/tracks/playlist-card.css";
-import "./login.css";
-import "./App.css";
+import Login from "../components/login/login";
+import NewPlaylist from "../components/createPlaylistForm";
+import TracksCard from "../components/tracks";
+import SearchData from "../components/searchInput";
+import UserProfile from "../components/user";
 
-import Login from "./components/login/login";
-import NewPlaylist from "./components/createPlaylistForm";
-import TracksCard from "./components/tracks";
-import SearchData from "./components/searchInput";
-import UserProfile from "./components/user";
+import styles from "./homePage.module.css";
 
 const HomePage = () => {
   const [dataTrack, setDataTrack] = useState([]);
@@ -60,7 +56,7 @@ const HomePage = () => {
   }, [accessToken]);
 
   // Handle search API
-  const hadleSearchPlaylist = async () => {
+  const handleSearchPlaylist = async () => {
     await axios
       .get("https://api.spotify.com/v1/search", {
         headers: {
@@ -72,7 +68,7 @@ const HomePage = () => {
           api_key: process.env.REACT_APP_CLIENT_ID,
           q: keyword,
           type: "track",
-          limit: 12,
+          limit: 36,
         },
       })
       .then((response) => {
@@ -157,31 +153,35 @@ const HomePage = () => {
   const showTrackPage = () => {
     if (accessToken) {
       let renderTrackPage = (
-        <div>
-          <div>{showUserProfile()}</div>
-          <NewPlaylist
-            submitNewPlaylistForm={submitNewPlaylistForm}
-            getTitleValue={getTitleValue}
-            getDescriptionValue={getDescriptionValue}
-            handleCreateNewPlaylist={handleCreateNewPlaylist}
-          />
-          <div>
-            <h2>Put selected Tracks in here</h2>
+        <>
+          <div className={styles.container_grid}>
+            <div className={styles.grid_item_one}>
+              {showUserProfile()}
+              <NewPlaylist
+                submitNewPlaylistForm={submitNewPlaylistForm}
+                getTitleValue={getTitleValue}
+                getDescriptionValue={getDescriptionValue}
+                handleCreateNewPlaylist={handleCreateNewPlaylist}
+              />
+              {/* <div>
+                <h2>Put selected Tracks in here</h2>
+              </div> */}
+            </div>
+            <div className={styles.grid_item_two}>
+              <SearchData
+                onChange={handleSetSearchPlaylist}
+                onClick={handleSearchPlaylist}
+                placeholder="Search Tracks"
+              />
+             <div className={styles.tracks}>
+                {dataTrack != null &&
+                  dataTrack.map((track) => {
+                    return <TracksCard key={track.id} track={track} />;
+                  })}
+              </div>
+            </div>
           </div>
-          <div className="search-bar">
-            <SearchData
-              onChange={handleSetSearchPlaylist}
-              onClick={hadleSearchPlaylist}
-              placeholder="Search Tracks"
-            />
-          </div>
-          <div className="tracks">
-            {dataTrack != null &&
-              dataTrack.map((track) => {
-                return <TracksCard key={track.id} track={track} />;
-              })}
-          </div>
-        </div>
+        </>
       );
       return renderTrackPage;
     }
@@ -192,11 +192,11 @@ const HomePage = () => {
       <div className="body">
         <Switch>
           <Route exact path="/create-playlist">
-            {!accessToken && <Redirect to="/"/>}
+            {!accessToken && <Redirect to="/" />}
             {showTrackPage()}
           </Route>
           <Route exact path="/">
-            {accessToken && <Redirect to="/create-playlist"/>}
+            {accessToken && <Redirect to="/create-playlist" />}
             <Login />
           </Route>
         </Switch>

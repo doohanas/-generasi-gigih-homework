@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import "./playlist-card.css";
+import styles from "./tracksCard.module.css";
 
 function TracksCard({ track }) {
   const [tracksSelected, setTrackSelected] = useState("Select");
@@ -12,27 +12,27 @@ function TracksCard({ track }) {
   };
 
   return (
-    <div className="track">
-      <div className="track-card">
-        <div className="track-card-image">
-          <img src={track.album.images[1].url} alt={`${track.songTitle}`} />
+      <div className={styles.track_card}>
+        <div className={styles.track_card_image}>
+          <img src={track.album.images[2].url} alt={`${track.songTitle}`} />
         </div>
 
-        <div className="track-card-text">
-          <p className="albumName">Title: {track.album.name}</p>
-          <p className="albumType">Type: {track.album.album_type}</p>
-          <p className="artist">Artist: {track.artists[0].name}</p>
-          <button className="btn" onClick={handleButtonTrack}>
+        <div className={styles.track_card_text}>
+          <p className={styles.albumName}>Title: {track.album.name}</p>
+          <p className={styles.albumType}>Album: {track.album.album_type}</p>
+          <p className={styles.artist}>Artist: {track.artists[0].name}</p>
+        </div>
+        <div className={styles.button_tracks_container}>
+          <button className={styles.button_tracks} onClick={handleButtonTrack}>
             {tracksSelected}
           </button>
         </div>
       </div>
-    </div>
   );
 }
 
 TracksCard.propTypes = {
-  track: PropTypes.node.isRequired,
+  track: PropTypes.any.isRequired,
 };
 
 export default TracksCard;

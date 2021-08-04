@@ -1,0 +1,20 @@
+.search_bar {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.search_input {
+  border-style: none;
+  padding: 6px;
+  align-items: center;
+}
+.search_button {
+  background-color: #04aa6d;
+  color: #fff;
+  padding: 10px 15px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #04aa6d;
+  border-style: none;
+}
+

@@ -1,0 +1,18 @@
+.login_bar {
+  margin: 25px;
+  display: flex;
+  justify-content: center;
+}
+.login_bar button {
+  padding: 5px 15px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  background-color: #04aa6d;
+  border-style: none;
+  box-shadow: 0 5px #999;
+}
+.login_bar button:active {
+  box-shadow: 0px 2px #999;
+  transform: translateY(5px);
+}

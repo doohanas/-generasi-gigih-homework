@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./user.css";
+import styles from "./user.module.css";
 
 const UserProfile = ({ userId }) => {
   return (
     <>
-      <div className="userProfile">
-        <h2> USER PROFILE</h2>
+      <div className={styles.userProfile}>
         <img
           src={userId.images[0].url}
           alt="User Profile"
@@ -19,7 +18,7 @@ const UserProfile = ({ userId }) => {
 };
 
 UserProfile.propTypes = {
-  userId: PropTypes.node.isRequired,
+  userId: PropTypes.any.isRequired,
 };
 
 export default UserProfile;

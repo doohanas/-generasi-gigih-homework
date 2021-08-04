@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../button/button.css";
-import "./form.css";
+import styles from "./form.module.css";
 
 const NewPlaylist = ({
   submitNewPlaylistForm,
@@ -10,8 +9,8 @@ const NewPlaylist = ({
   handleCreateNewPlaylist,
 }) => {
   return (
-    <div className="container-newPlaylist">
-      <form id="formCreatePlaylist" onSubmit={submitNewPlaylistForm}>
+    <div className={styles.container_newPlaylist}>
+      <form id={styles.formCreatePlaylist} onSubmit={submitNewPlaylistForm}>
         <h2>Create New Playlist</h2>
         <label htmlFor="playlistTitle">Title: </label>
         <input
@@ -29,9 +28,9 @@ const NewPlaylist = ({
           minLength="20"
           required
         />
-        <div className="create-button">
+        <div className={styles.create_button}>
           <button
-            className="btn"
+            className={styles.create_button_playlist}
             onClick={handleCreateNewPlaylist}
             type="submit"
           >
@@ -44,10 +43,10 @@ const NewPlaylist = ({
 };
 
 NewPlaylist.propTypes = {
-  submitNewPlaylistForm: PropTypes.node.isRequired,
-  getTitleValue: PropTypes.node.isRequired,
-  getDescriptionValue: PropTypes.node.isRequired,
-  handleCreateNewPlaylist: PropTypes.node.isRequired,
+  submitNewPlaylistForm: PropTypes.any.isRequired,
+  getTitleValue: PropTypes.any.isRequired,
+  getDescriptionValue: PropTypes.any.isRequired,
+  handleCreateNewPlaylist: PropTypes.any.isRequired,
 };
 
 export default NewPlaylist;

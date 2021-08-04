@@ -1,27 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../button/button.css";
+import styles from "./searchBar.module.css";
 
 const SearchData = ({ placeholder, onChange, onClick }) => {
   return (
-    <>
+    <div className={styles.search_bar}>
       <input
-        className="search-input"
+        className={styles.search_input}
         type="text"
         onChange={onChange}
         placeholder={placeholder}
-      ></input>
-      <button className="btn" onClick={onClick}>
+      />
+      <button className={styles.search_button} onClick={onClick}>
         Search
       </button>
-    </>
+    </div>
   );
 };
 
 SearchData.propTypes = {
-  placeholder: PropTypes.node.isRequired,
-  onChange: PropTypes.node.isRequired,
-  onClick: PropTypes.node.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  onChange: PropTypes.any.isRequired,
+  onClick: PropTypes.any.isRequired,
 };
 
 export default SearchData;

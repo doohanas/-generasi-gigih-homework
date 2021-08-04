@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import "./button.css";
+import styles from "./button.module.css";
 
 const Button = () => {
   const [btn, setBtn] = useState("Select");
@@ -9,7 +9,7 @@ const Button = () => {
     btn === "Select" ? setBtn("Deselect") : setBtn("Select");
   };
   return (
-    <button className="btn" onClick={handleBtn}>
+    <button className={styles.btn} onClick={handleBtn}>
       {btn}
     </button>
   );
