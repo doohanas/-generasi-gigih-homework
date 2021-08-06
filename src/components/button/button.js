@@ -1,22 +1,19 @@
-import React, { useState } from "react";
+import React from "react"
 import PropTypes from "prop-types";
 import styles from "./button.module.css";
 
-const Button = () => {
-  const [btn, setBtn] = useState("Select");
-
-  const handleBtn = () => {
-    btn === "Select" ? setBtn("Deselect") : setBtn("Select");
-  };
+const Button = ({ onClick, nameButton, className = styles.button }) => {
   return (
-    <button className={styles.btn} onClick={handleBtn}>
-      {btn}
+    <button className={className} onClick={onClick}>
+      {nameButton}
     </button>
   );
 };
 
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired,
+  nameButton: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default Button;

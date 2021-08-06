@@ -1,5 +1,5 @@
 .track_card {
-  background-color: #424242;
+   background-color: #424242;
   width: 250px;
   height: 250px;
   margin: 10px 10px;
@@ -20,6 +20,7 @@
   border-radius: 50%;
 }
 .track_card_text {
+  font-size: 16px;
   width: auto;
   height: 100px;
   margin: 5px 0px 0px;

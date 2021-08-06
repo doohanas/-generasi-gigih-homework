@@ -1,0 +1,33 @@
+.container_newPlaylist {
+  margin: 20px auto;
+}
+.container_newPlaylist > h3 {
+  text-align: center;
+  padding: 0px 0px 10px 10px;
+}
+#form_createPlaylist {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.button_newPlaylist {
+  margin-top: 5px;
+}
+.playlist_button {
+  width: 36px;
+  height: 36px;
+    margin: 10px 20px;
+  /* text-align: center; */
+  /* color: #fff; */
+  background-color: #04aa6d;
+  border: none;
+  border-radius: 15px;
+}
+.playlist_button:hover {
+  background-color: #0c7a52;
+}
+.newPlaylist_input {
+  font-size: 14px;
+  text-align:end;
+  margin-top: 10px;
+}

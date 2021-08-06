@@ -9,6 +9,9 @@ export const tokenState = createSlice({
     getToken: (state, action) => {
       state.currentToken = action.payload;
     },
+    emptyToken: (state) => {
+      state.currentToken = null;
+    }
   },
 });
 

@@ -1,4 +1,4 @@
-.login_button button {
+.logout_button button {
   padding: 10px 30px;
   text-align: center;
   cursor: pointer;
@@ -7,3 +7,4 @@
   border-style: none;
   border-radius: 5px;
 }
+

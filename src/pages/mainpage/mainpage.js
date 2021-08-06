@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTokenAction, selectToken } from "../redux/token/sliceToken";
+import { getTokenAction, selectToken } from "../../redux/token/sliceToken";
 import {
   BrowserRouter as Router,
   Route,
@@ -9,15 +9,14 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 
-import Login from "../components/login/login";
-import NewPlaylist from "../components/createPlaylistForm";
-import TracksCard from "../components/tracks";
-import SearchData from "../components/searchInput";
-import UserProfile from "../components/user";
+import NewPlaylist from "../../components/createPlaylistForm/playlist";
+import TracksCard from "../../components/tracks/tracks";
+import SearchData from "../../components/searchInput/searchBar";
+import UserProfile from "../../components/user";
 
-import styles from "./homePage.module.css";
+import styles from "./mainpage.module.css";
 
-const HomePage = () => {
+const Mainpage = () => {
   const [dataTrack, setDataTrack] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [userID, setUserID] = useState("");
@@ -49,6 +48,12 @@ const HomePage = () => {
       );
       console.log({ access_token, expires_in, token_type });
       dispatch(getTokenAction.getToken(access_token));
+
+      localStorage.clear();
+
+      localStorage.setItem("ACCESS_TOKEN", access_token);
+      localStorage.setItem("EXPIRES_IN", expires_in);
+      localStorage.setItem("TOKEN_TYPE", token_type);
     }
     if (accessToken) {
       handleGetUserId();
@@ -68,7 +73,7 @@ const HomePage = () => {
           api_key: process.env.REACT_APP_CLIENT_ID,
           q: keyword,
           type: "track",
-          limit: 36,
+          limit: 25,
         },
       })
       .then((response) => {
@@ -144,6 +149,12 @@ const HomePage = () => {
     setKeyword(event.target.value);
   };
 
+  // Handle Submit Playlist
+  const handleSubmitTracksForm = (event) => {
+    event.preventDefault();
+    handleSearchPlaylist();
+  }
+
   // To show user profile
   const showUserProfile = () => {
     return userID ? <UserProfile userId={userID} /> : null;
@@ -154,8 +165,8 @@ const HomePage = () => {
     if (accessToken) {
       let renderTrackPage = (
         <>
-          <div className={styles.container_grid}>
-            <div className={styles.grid_item_one}>
+          <div className={styles.main_content}>
+            <div className={styles.sidebar}>
               {showUserProfile()}
               <NewPlaylist
                 submitNewPlaylistForm={submitNewPlaylistForm}
@@ -163,18 +174,16 @@ const HomePage = () => {
                 getDescriptionValue={getDescriptionValue}
                 handleCreateNewPlaylist={handleCreateNewPlaylist}
               />
-              {/* <div>
-                <h2>Put selected Tracks in here</h2>
-              </div> */}
             </div>
-            <div className={styles.grid_item_two}>
+            <div className={styles.tracks_content}>
               <SearchData
+                onSubmit={handleSubmitTracksForm}
                 onChange={handleSetSearchPlaylist}
                 onClick={handleSearchPlaylist}
-                placeholder="Search Tracks"
+                placeholder="Search..."
               />
-             <div className={styles.tracks}>
-                {dataTrack != null &&
+              <div className={styles.tracks}>
+                {dataTrack !== null &&
                   dataTrack.map((track) => {
                     return <TracksCard key={track.id} track={track} />;
                   })}
@@ -197,12 +206,11 @@ const HomePage = () => {
           </Route>
           <Route exact path="/">
             {accessToken && <Redirect to="/create-playlist" />}
-            <Login />
-          </Route>
+            </Route>
         </Switch>
       </div>
     </Router>
   );
 };
 
-export default HomePage;
+export default Mainpage;

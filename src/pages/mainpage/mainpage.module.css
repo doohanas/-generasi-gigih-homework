@@ -1,12 +1,12 @@
-.container_grid {
+.main_content {
   display: grid;
   grid-template-columns: auto auto auto;
 }
-.grid_item_one {
+.sidebar {
   width: 300px;
   /* background-color: rgba(95, 78, 46, 0.76); */
 }
-.grid_item_two {
+.tracks_content {
   width: auto;
 }
 /* *Container for tracks  */
