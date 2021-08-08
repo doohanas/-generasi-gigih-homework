@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { getTokenAction } from "../../redux/token/sliceToken";
+import { getTokenAction } from "redux/token/sliceToken";
 import styles from "./logout.module.css";
 
 const Logout = () => {
   // Login Page
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(getTokenAction.emptyToken());

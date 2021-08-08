@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTokenAction, selectToken } from "../../redux/token/sliceToken";
+import { getTokenAction, selectToken } from "redux/token/sliceToken";
 import {
   BrowserRouter as Router,
   Route,
@@ -9,10 +9,10 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 
-import NewPlaylist from "../../components/createPlaylistForm/playlist";
-import TracksCard from "../../components/tracks/tracks";
-import SearchData from "../../components/searchInput/searchBar";
-import UserProfile from "../../components/user";
+import NewPlaylist from "components/createPlaylistForm/playlist";
+import TracksCard from "components/tracks/tracks";
+import SearchData from "components/searchInput/searchBar";
+import UserProfile from "components/user";
 
 import styles from "./mainpage.module.css";
 
@@ -153,7 +153,7 @@ const Mainpage = () => {
   const handleSubmitTracksForm = (event) => {
     event.preventDefault();
     handleSearchPlaylist();
-  }
+  };
 
   // To show user profile
   const showUserProfile = () => {
@@ -206,7 +206,7 @@ const Mainpage = () => {
           </Route>
           <Route exact path="/">
             {accessToken && <Redirect to="/create-playlist" />}
-            </Route>
+          </Route>
         </Switch>
       </div>
     </Router>

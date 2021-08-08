@@ -4,7 +4,7 @@ import {
   AUTHORIZE_URL,
   REDIRECT_URL_AFTER_LOGIN,
   REACT_APP_SCOPES,
-} from "../../data/spotifyAuth";
+} from "data/spotifyAuth";
 import styles from "./login.module.css";
 
 const Login = () => {
