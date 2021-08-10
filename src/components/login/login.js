@@ -7,6 +7,7 @@ import {
 } from "data/spotifyAuth";
 import styles from "./login.module.css";
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const Login = () => {
   // Login Page
   const handleLogin = () => {

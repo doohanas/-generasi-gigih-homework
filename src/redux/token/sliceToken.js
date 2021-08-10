@@ -15,6 +15,7 @@ export const tokenState = createSlice({
   },
 });
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const selectToken = (state) => state.token.currentToken;
 
 export const getTokenAction = tokenState.actions;

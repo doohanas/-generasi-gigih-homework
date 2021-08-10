@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { getTokenAction } from "redux/token/sliceToken";
 import styles from "./logout.module.css";
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const Logout = () => {
   // Login Page
   const dispatch = useDispatch();

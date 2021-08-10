@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./searchBar.module.css";
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const SearchData = ({ onSubmit, placeholder, onChange, onClick }) => {
   return (
     <>

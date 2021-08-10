@@ -5,6 +5,7 @@ import Login from "components/login/login";
 import Logout from "components/logout/logout";
 import styles from "./header.module.css";
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function Header() {
   const accessToken = useSelector(selectToken);
   return (

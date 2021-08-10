@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./user.module.css";
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const UserProfile = ({ userId }) => {
   return (
     <>
