@@ -7,11 +7,10 @@ import {
 } from "data/spotifyAuth";
 import styles from "./login.module.css";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const Login = () => {
+const Login: React.FC = (): JSX.Element => {
   // Login Page
-  const handleLogin = () => {
-    window.location = `${AUTHORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${REACT_APP_SCOPES}&response_type=token&show_dialog=true&state=123`;
+  const handleLogin = (): void=> {
+    window.location.href = `${AUTHORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${REACT_APP_SCOPES}&response_type=token&show_dialog=true&state=123`;
   };
   return (
     <div className={styles.login_button}>

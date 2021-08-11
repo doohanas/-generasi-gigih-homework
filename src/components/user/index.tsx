@@ -2,8 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./user.module.css";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const UserProfile = ({ userId }) => {
+interface Profile {
+  images: {
+    url: string;
+  }[];
+  display_name: string;
+}
+
+interface UserProfileProps {
+  userId: Profile;
+}
+
+const UserProfile: React.FC<UserProfileProps> = ({ userId }): JSX.Element => {
   return (
     <>
       <div className={styles.userProfile}>

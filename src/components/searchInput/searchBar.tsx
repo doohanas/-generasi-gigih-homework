@@ -2,8 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./searchBar.module.css";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const SearchData = ({ onSubmit, placeholder, onChange, onClick }) => {
+interface SearchDataProps {
+  onSubmit: () => string;
+  placeholder: string;
+  onChange: () => string;
+  onClick: () => string;
+}
+
+const SearchData: React.FC<SearchDataProps> = ({ onSubmit, placeholder, onChange, onClick }): JSX.Element => {
   return (
     <>
       <form id={styles.search_form} onSubmit={onSubmit}>

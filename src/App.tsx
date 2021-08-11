@@ -1,9 +1,10 @@
-import "./App.css";
 import React from "react";
 import Header from "pages/homepage/header/header";
 import Mainpage from "pages/mainpage/mainpage";
 
-function App() {
+import "./App.css";
+
+const App: React.FC = (): JSX.Element => {
   return (
     <div className="App">
       <Header />

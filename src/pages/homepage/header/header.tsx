@@ -6,7 +6,7 @@ import Logout from "components/logout/logout";
 import styles from "./header.module.css";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-function Header() {
+const Header: React.FC = (): JSX.Element => {
   const accessToken = useSelector(selectToken);
   return (
     <div className={styles.header}>

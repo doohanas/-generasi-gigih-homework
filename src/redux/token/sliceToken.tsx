@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+// import React from "react";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { RootState } from "../../app/store";
 
 export const tokenState = createSlice({
   name: "token",
@@ -6,17 +8,16 @@ export const tokenState = createSlice({
     currentToken: null,
   },
   reducers: {
-    getToken: (state, action) => {
+    getToken: (state, action: PayloadAction<null>) => {
       state.currentToken = action.payload;
     },
     emptyToken: (state) => {
       state.currentToken = null;
-    }
+    },
   },
 });
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const selectToken = (state) => state.token.currentToken;
+export const selectToken = (state: RootState): null => state.token.currentToken;
 
 export const getTokenAction = tokenState.actions;
 export default tokenState.reducer;

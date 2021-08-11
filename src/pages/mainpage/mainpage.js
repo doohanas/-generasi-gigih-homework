@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -17,7 +18,6 @@ import UserProfile from "components/user";
 
 import styles from "./mainpage.module.css";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const Mainpage = () => {
   const [dataTrack, setDataTrack] = useState([]);
   const [keyword, setKeyword] = useState("");
@@ -106,11 +106,10 @@ const Mainpage = () => {
   };
 
   // console.log(userID);
-  const userId = userID.id;
   const handleCreateNewPlaylist = async () => {
     try {
       const response = await axios.post(
-        `https://api.spotify.com/v1/users/${userId}/playlists`,
+        `https://api.spotify.com/v1/users/${userID.id}/playlists`,
         {
           name: title,
           description: description,
@@ -195,7 +194,7 @@ const Mainpage = () => {
   // To Show Track Page
   const showTrackPage = () => {
     if (accessToken) {
-      let renderTrackPage = (
+      const renderTrackPage = (
         <>
           <div className={styles.main_content}>
             <div className={styles.sidebar}>

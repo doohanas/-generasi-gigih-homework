@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./tracksCard.module.css";
 
 interface Album {
@@ -15,23 +12,23 @@ interface Artist {
 }
 interface TrackDataProps {
   uri: string;
-  album: Album;
   name: string;
+  album: Album;
   artists: Artist[];
 }
 interface TrackCardProps {
   track: TrackDataProps;
   selectTrackButton: boolean;
-  addSelectedTracks: any;
-  removeSelectedTracks: any;
+  addSelectedTracks: (track: string) => string;
+  removeSelectedTracks: (track: string) => string;
 }
 
-function TracksCard({
+const TracksCard: React.FC<TrackCardProps> = ({
   track,
   selectTrackButton,
   addSelectedTracks,
   removeSelectedTracks,
-}: TrackCardProps) {
+}): JSX.Element => {
   const [tracksSelected, setTrackSelected] = useState(selectTrackButton);
 
   const handleButtonTrack = (): void => {
@@ -63,16 +60,26 @@ function TracksCard({
   return (
     <div className={styles.track_card}>
       <div className={styles.track_card_image}>
-        <img src={track.album.images[2].url} alt="album" />
+        <img
+          data-testid="trackImage"
+          src={track.album.images[2].url}
+          alt="album"
+        />
       </div>
       <div className={styles.track_card_text}>
-        <p className={styles.albumName}>Title: {track.name}</p>
-        <p className={styles.albumType}>Album: {track.album.album_type}</p>
-        <p className={styles.artist}>Artist: {track.artists[0].name}</p>
+        <p data-testid="trackTitle" className={styles.albumName}>
+          Title: {track.name}
+        </p>
+        <p data-testid="albumType" className={styles.albumType}>
+          Album: {track.album.album_type}
+        </p>
+        <p data-testid="trackArtist" className={styles.artist}>
+          Artist: {track.artists[0].name}
+        </p>
       </div>
       <div className={styles.button_tracks_container}>{buttonSelect};</div>
     </div>
   );
-}
+};
 
 export default TracksCard;

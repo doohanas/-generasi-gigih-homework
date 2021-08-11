@@ -4,11 +4,11 @@ import { getTokenAction } from "redux/token/sliceToken";
 import styles from "./logout.module.css";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const Logout = () => {
+const Logout: React.FC = (): JSX.Element => {
   // Login Page
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     dispatch(getTokenAction.emptyToken());
   };
   return (
