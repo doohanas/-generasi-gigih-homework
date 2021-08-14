@@ -1,11 +1,10 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./playlistForm.module.css";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const NewPlaylist = ({
-  submitNewPlaylistForm,
   getTitleValue,
   getDescriptionValue,
   handleCreateNewPlaylist,
@@ -13,13 +12,12 @@ const NewPlaylist = ({
   return (
     <div className={styles.container_newPlaylist}>
       <h3>Playlist</h3>
-      <form id={styles.form_createPlaylist} onSubmit={submitNewPlaylistForm}>
+      <form
+        id={styles.form_createPlaylist}
+        onSubmit={handleCreateNewPlaylist}
+      >
         <div className={styles.button_newPlaylist}>
-          <button
-            className={styles.playlist_button}
-            onClick={handleCreateNewPlaylist}
-            type="submit"
-          >
+          <button className={styles.playlist_button} type="submit">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               enableBackground="new 0 0 20 20"
@@ -48,7 +46,7 @@ const NewPlaylist = ({
             name="playlistTitle"
             onChange={getTitleValue}
             type="text"
-            minLength="10"
+            minLength={10}
             required
           />
           <label htmlFor="playlistDescription">Description: </label>
@@ -56,7 +54,7 @@ const NewPlaylist = ({
             name="playlistDescription"
             onChange={getDescriptionValue}
             type="text"
-            minLength="20"
+            minLength={20}
             required
           />
         </div>
@@ -66,7 +64,6 @@ const NewPlaylist = ({
 };
 
 NewPlaylist.propTypes = {
-  submitNewPlaylistForm: PropTypes.any.isRequired,
   getTitleValue: PropTypes.any.isRequired,
   getDescriptionValue: PropTypes.any.isRequired,
   handleCreateNewPlaylist: PropTypes.any.isRequired,

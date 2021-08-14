@@ -106,7 +106,8 @@ const Mainpage = () => {
   };
 
   // console.log(userID);
-  const handleCreateNewPlaylist = async () => {
+  const handleCreateNewPlaylist = async (event) => {
+    event.preventDefault();
     try {
       const response = await axios.post(
         `https://api.spotify.com/v1/users/${userID.id}/playlists`,
@@ -159,12 +160,6 @@ const Mainpage = () => {
     setSelectedTrack(listTracks);
   };
 
-  //handle submit Form CreatePlaylistForm
-  const submitNewPlaylistForm = (event) => {
-    event.preventDefault();
-    handleCreateNewPlaylist();
-  };
-
   //handle get title value from form
   const getTitleValue = (event) => {
     setTitle(event.target.value);
@@ -200,10 +195,9 @@ const Mainpage = () => {
             <div className={styles.sidebar}>
               {showUserProfile()}
               <NewPlaylist
-                submitNewPlaylistForm={submitNewPlaylistForm}
+                handleCreateNewPlaylist={handleCreateNewPlaylist}
                 getTitleValue={getTitleValue}
                 getDescriptionValue={getDescriptionValue}
-                handleCreateNewPlaylist={handleCreateNewPlaylist}
               />
             </div>
             <div className={styles.tracks_content}>
@@ -216,7 +210,6 @@ const Mainpage = () => {
               <div className={styles.tracks}>
                 {dataTrack !== null &&
                   dataTrack.map((track) => {
-
                     const selectTrackButton = getSelectTrackButton(track.uri);
                     return (
                       <TracksCard

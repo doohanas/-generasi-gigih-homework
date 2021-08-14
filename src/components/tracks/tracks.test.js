@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { screen, render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import TracksCard from "./tracks";
