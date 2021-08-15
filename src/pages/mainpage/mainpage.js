@@ -30,12 +30,10 @@ const Mainpage = () => {
   const accessToken = useSelector(selectToken);
   const dispatch = useDispatch();
 
-  // Get Token
   const tokenFromURL = (hash) => {
     const stringAfterHashtag = hash.substring(1);
     const paramsInUrl = stringAfterHashtag.split("&");
     const paramsSplitUp = paramsInUrl.reduce((accumulator, currentValue) => {
-      // console.log(currentValue);
       const [key, value] = currentValue.split("=");
       accumulator[key] = value;
       return accumulator;
@@ -44,7 +42,6 @@ const Mainpage = () => {
     return paramsSplitUp;
   };
 
-  // Handle search API
   const handleSearchPlaylist = async () => {
     await axios
       .get("https://api.spotify.com/v1/search", {
@@ -64,11 +61,10 @@ const Mainpage = () => {
         setDataTrack(response.data.tracks.items);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 
-  // Handle get user API
   const handleGetUserId = async () => {
     try {
       const response = await axios.get("https://api.spotify.com/v1/me", {
@@ -84,7 +80,6 @@ const Mainpage = () => {
     }
   };
 
-  // Handle Add Tracks to a Playlist Api
   const handleAddTrackToPlaylist = async (playlist_id) => {
     try {
       await axios.post(
@@ -105,7 +100,6 @@ const Mainpage = () => {
     }
   };
 
-  // console.log(userID);
   const handleCreateNewPlaylist = async (event) => {
     event.preventDefault();
     try {
@@ -131,7 +125,6 @@ const Mainpage = () => {
     }
   };
 
-  // To Get Button sate
   const getSelectTrackButton = (uri) => {
     let statusState = false;
     for (let i = 0; i < selectedTrack.length; i++) {
@@ -142,14 +135,12 @@ const Mainpage = () => {
     return statusState;
   };
 
-  // Add selected tracks to playlist
   const addSelectedTracks = (uri) => {
     const listTracks = selectedTrack;
     listTracks.push(uri);
     setSelectedTrack(listTracks);
   };
 
-  // Remove selected tracks
   const removeSelectedTracks = (uri) => {
     const listTracks = selectedTrack;
     for (let i = 0; i < selectedTrack.length; i++) {
@@ -160,33 +151,27 @@ const Mainpage = () => {
     setSelectedTrack(listTracks);
   };
 
-  //handle get title value from form
   const getTitleValue = (event) => {
     setTitle(event.target.value);
   };
 
-  // handle get description value from form
   const getDescriptionValue = (event) => {
     setDescription(event.target.value);
   };
 
-  // Handle Search Playlist
   const handleSetSearchPlaylist = (event) => {
     setKeyword(event.target.value);
   };
 
-  // Handle Submit Playlist
   const handleSubmitTracksForm = (event) => {
     event.preventDefault();
     handleSearchPlaylist();
   };
 
-  // To show user profile
   const showUserProfile = () => {
     return userID ? <UserProfile userId={userID} /> : null;
   };
 
-  // To Show Track Page
   const showTrackPage = () => {
     if (accessToken) {
       const renderTrackPage = (
@@ -230,13 +215,11 @@ const Mainpage = () => {
     }
   };
 
-  // To set token from URL into accessToken state
   useEffect(() => {
     if (window.location.hash) {
       const { access_token, expires_in, token_type } = tokenFromURL(
         window.location.hash
       );
-      console.log({ access_token, expires_in, token_type });
       dispatch(getTokenAction.getToken(access_token));
 
       localStorage.clear();
