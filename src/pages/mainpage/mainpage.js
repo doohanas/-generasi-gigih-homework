@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTokenAction, selectToken } from "redux/token/sliceToken";
+import { CLIENT_ID } from "data/spotifyAuth";
 import {
   BrowserRouter as Router,
   Route,
@@ -51,7 +52,7 @@ const Mainpage = () => {
           "Content-Type": "application/json",
         },
         params: {
-          api_key: process.env.REACT_APP_CLIENT_ID,
+          api_key: CLIENT_ID,
           q: keyword,
           type: "track",
           limit: 15,
