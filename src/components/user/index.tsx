@@ -15,12 +15,9 @@ interface UserProfileProps {
 const UserProfile: React.FC<UserProfileProps> = ({ userId }): JSX.Element => {
   return (
     <>
-      <div className={styles.userProfile}>
-        <img
-          src={userId.images[0].url}
-          alt="User Profile"
-          className="display_picture"
-        />
+      <div className={styles.user_profile}>
+        <img src={userId.images[0].url} alt="User Profile" />
+        <div className={styles.login_color}></div>
         <p>{userId.display_name}</p>
       </div>
     </>

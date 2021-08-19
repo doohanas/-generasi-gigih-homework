@@ -8,6 +8,7 @@ import {
   REACT_APP_SCOPES,
 } from "data/spotifyAuth";
 
+import logo from"assets/logo.png"
 import styles from "./header.module.css";
 
 const Header: React.FC = (): JSX.Element => {
@@ -23,7 +24,10 @@ const Header: React.FC = (): JSX.Element => {
   };
   return (
     <div className={styles.header}>
-      <h2>My WEB APP</h2>
+      <div className={styles.topbar_logo}>
+        <img src={logo} alt="logo" className={styles.logo} />
+        <a>MUSIC</a>
+      </div>
       {!accessToken && (
         <div className={styles.navigation_login}>
           <button type="submit" onClick={handleLogin}>

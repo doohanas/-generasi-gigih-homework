@@ -6,9 +6,20 @@
   display: flex;
   align-items: flex-end;
 }
-.header > h2 {
-  padding: 30px 15px;
-  font-size: 1.25rem;
+.topbar_logo {
+  display: inline-flex;
+  margin-left: 20px;
+  padding-bottom: 5px;
+}
+.topbar_logo > a {
+  padding: 20px 0px 15px 0px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+.logo {
+  width: 70px;
+  height: 70px;
 }
 .navigation_login, .navigation_logout {
   margin: 0px 10px 0px auto;

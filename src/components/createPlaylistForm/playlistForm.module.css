@@ -31,11 +31,17 @@
 }
 #playlist_title,
 #playlist_description {
-  width: 90%;
+  width: 75%;
   margin: 5px;
   border-style: none;
   border-radius: 5px;
   padding: 10px 10px 10px 15px;
+  transition: width 0.4s ease-in-out;
+}
+
+#playlist_title:focus,
+#playlist_description:focus {
+  width: 90%;
 }
 
 
