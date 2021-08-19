@@ -34,11 +34,17 @@ const Mainpage = () => {
   const tokenFromURL = (hash) => {
     const stringAfterHashtag = hash.substring(1);
     const paramsInUrl = stringAfterHashtag.split("&");
-    const paramsSplitUp = paramsInUrl.reduce((accumulator, currentValue) => {
-      const [key, value] = currentValue.split("=");
-      accumulator[key] = value;
-      return accumulator;
-    }, {});
+    const paramsSplitUp = paramsInUrl.reduce(
+      (
+        accumulator,
+        currentValue
+      ) => {
+        const [key, value] = currentValue.split("=");
+        accumulator[key] = value;
+        return accumulator;
+      },
+      {}
+    );
 
     return paramsSplitUp;
   };
@@ -103,9 +109,10 @@ const Mainpage = () => {
 
   const handleCreateNewPlaylist = async (event) => {
     event.preventDefault();
+    const userId = userID.id;
     try {
       const response = await axios.post(
-        `https://api.spotify.com/v1/users/${userID.id}/playlists`,
+        `https://api.spotify.com/v1/users/${userId}/playlists`,
         {
           name: title,
           description: description,
@@ -191,8 +198,7 @@ const Mainpage = () => {
                 onSubmit={handleSubmitTracksForm}
                 onChange={handleSetSearchPlaylist}
                 onClick={handleSearchPlaylist}
-                placeholder="Search..."
-              />
+                placeholder="Search..." />
               <div className={styles.tracks}>
                 {dataTrack !== null &&
                   dataTrack.map((track) => {
@@ -203,8 +209,7 @@ const Mainpage = () => {
                         track={track}
                         selectTrackButton={selectTrackButton}
                         addSelectedTracks={addSelectedTracks}
-                        removeSelectedTracks={removeSelectedTracks}
-                      />
+                        removeSelectedTracks={removeSelectedTracks} />
                     );
                   })}
               </div>
@@ -214,7 +219,7 @@ const Mainpage = () => {
       );
       return renderTrackPage;
     }
-  };
+  }
 
   useEffect(() => {
     if (window.location.hash) {

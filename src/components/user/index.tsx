@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styles from "./user.module.css";
 
 interface Profile {
@@ -26,10 +25,6 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId }): JSX.Element => {
       </div>
     </>
   );
-};
-
-UserProfile.propTypes = {
-  userId: PropTypes.any.isRequired,
 };
 
 export default UserProfile;

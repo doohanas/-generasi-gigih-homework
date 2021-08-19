@@ -11,17 +11,21 @@
   flex-direction: row;
   align-items: center;
   position: relative;
+  box-sizing: border-box;
   width: 200px;
-  padding: 3px 200px 3px 6px;
+  padding: 5px 10px;
   border-style: none;
   border-radius: 5px;
   box-shadow: #04aa6d;
+  transition: width 0.4s ease-in-out;
+}
+.search_input:focus {
+  width: 100%;
 }
 .search_button {
   background-color: #04aa6d;
   color: #fff;
   width: 65px;
-  margin: 0px;
   padding: 5px 10px;
   cursor: pointer;
   border-style: none;

@@ -3,7 +3,8 @@
   text-align: center;
 }
 .userProfile > img {
-  width: 100px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
 }
 .userProfile > p {

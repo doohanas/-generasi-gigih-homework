@@ -1,6 +1,5 @@
-// import React from "react";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../../app/store";
+import { createSlice } from "@reduxjs/toolkit";
+import type { RootState } from "redux/store";
 
 export const tokenState = createSlice({
   name: "token",
@@ -8,7 +7,7 @@ export const tokenState = createSlice({
     currentToken: null,
   },
   reducers: {
-    getToken: (state, action: PayloadAction<null>) => {
+    getToken: (state, action) => {
       state.currentToken = action.payload;
     },
     emptyToken: (state) => {

@@ -3,13 +3,11 @@
   grid-template-columns: auto auto auto;
 }
 .sidebar {
-  width: 300px;
-  /* background-color: rgba(95, 78, 46, 0.76); */
+  width: 400px;
 }
 .tracks_content {
   width: auto;
 }
-/* *Container for tracks  */
 .tracks {
   display: flex;
   justify-content: center;

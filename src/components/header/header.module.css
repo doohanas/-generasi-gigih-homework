@@ -10,10 +10,19 @@
   padding: 30px 15px;
   font-size: 1.25rem;
 }
-.navigation_login,
-.navigation_logout {
-  margin: 0px 50px 0px auto;
-  padding: 20px;
+.navigation_login, .navigation_logout {
+  margin: 0px 10px 0px auto;
+  padding: 20px 15px;
+}
+.navigation_login button,
+.navigation_logout button {
+  padding: 10px 30px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  background-color: #04aa6d;
+  border-style: none;
+  border-radius: 5px;
 }
 .navigation_login button:hover,
 .navigation_logout button:hover {

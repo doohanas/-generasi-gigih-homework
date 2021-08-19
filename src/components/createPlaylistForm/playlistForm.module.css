@@ -4,6 +4,7 @@
 .container_newPlaylist > h3 {
   text-align: center;
   padding: 0px 0px 10px 10px;
+  font-size: 20px;
 }
 #form_createPlaylist {
   display: flex;
@@ -11,14 +12,13 @@
   justify-content: center;
 }
 .button_newPlaylist {
-  margin-top: 5px;
+  margin-top: 25px;
 }
 .playlist_button {
+  justify-content: center;
   width: 36px;
   height: 36px;
-    margin: 10px 20px;
-  /* text-align: center; */
-  /* color: #fff; */
+  margin: 10px 20px;
   background-color: #04aa6d;
   border: none;
   border-radius: 15px;
@@ -27,7 +27,15 @@
   background-color: #0c7a52;
 }
 .newPlaylist_input {
-  font-size: 14px;
-  text-align:end;
   margin-top: 10px;
 }
+#playlist_title,
+#playlist_description {
+  width: 90%;
+  margin: 5px;
+  border-style: none;
+  border-radius: 5px;
+  padding: 10px 10px 10px 15px;
+}
+
+

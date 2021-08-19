@@ -25,7 +25,6 @@ module.exports = {
   },
   overrides: [
     {
-      // enable the rule specifically for TypeScript files
       files: ["*.ts", "*.tsx"],
       rules: {
         "@typescript-eslint/explicit-function-return-type": ["error"],

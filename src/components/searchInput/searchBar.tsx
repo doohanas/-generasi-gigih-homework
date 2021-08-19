@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styles from "./searchBar.module.css";
 
 interface SearchDataProps {
-  onSubmit: () => string;
+  onSubmit: () => void;
   placeholder: string;
-  onChange: () => string;
-  onClick: () => string;
+  onChange: () => void;
+  onClick: () => void;
 }
 
 const SearchData: React.FC<SearchDataProps> = ({ onSubmit, placeholder, onChange, onClick }): JSX.Element => {
@@ -34,13 +33,6 @@ const SearchData: React.FC<SearchDataProps> = ({ onSubmit, placeholder, onChange
       </form>
     </>
   );
-};
-
-SearchData.propTypes = {
-  placeholder: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onClick: PropTypes.any.isRequired,
 };
 
 export default SearchData;
