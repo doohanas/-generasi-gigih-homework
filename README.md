@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# MUSIC - CREATE PLAYLIST
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my Final Project Submission in [#GenerasiGIGIH](https://sites.google.com/anakbangsabisa.org/generasigigih-landingpage/home?authuser=1).
 
-## Available Scripts
+## PROBLEMS
 
-In the project directory, you can run:
+```
+The main problem in this app is how to create new playlist in spotify by using API Spotify.
+```
+The list challanges:
 
-### `yarn start`
+- [x] How to create connection to Api Spotify
+- [x] How to get accessToken from Api Soptify
+- [x] How to get userProfile from Api Spotify
+- [x] How to search music
+- [x] How to create new playlist after selected our favorite music
+## FEATURES
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Feature Login, use user account developers spotify
+- Feature search music
+- Feature create new playlist
+- Feature logout 
+- Feature show user profile (image and user name)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Built using
 
-### `yarn test`
+- [Create React App](https://create-react-app.dev/) to initialize the project.
+- Written in [typescript](https://typescriptlang.org) and javascript.
+- [Jest](https://jestjs.io/) and [react testing-library](https://testing-library.com/) for testing.
+- [React redux](https://react-redux.js.org/) for state management.
+- [Vercel](https://vercel.com/) for the hosting in this project.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## How to setup environment variables to run this project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run this project, you have to add the following environtment variables to you .env file.
+- Create `.env` file,
+- Update your `.env` file as your local configs :
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+    REACT_APP_CLIENT_ID = {Your client id in account developer spotify}
+    REACT_APP_REDIRECT_URL_AFTER_LOGIN  = {http://localhost:3000/}, for flow callback.
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Run the app
 
-### `yarn eject`
+You can run this project: 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### `npm start`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Run the app in the development mode. 
+open [http://localhost:3000](http://localhost:3000) to view the app in browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### `npm run test`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Launches the test runner mode.
