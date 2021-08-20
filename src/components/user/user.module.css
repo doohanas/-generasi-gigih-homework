@@ -7,7 +7,6 @@
   width: 75px;
   height: 75px;
   border-radius: 100%;
-
 }
 .user_profile > p {
   padding-top: 5px;
@@ -18,10 +17,9 @@
   height: 15px;
   border-radius: 100%;
   position: absolute;
-  bottom: 25px;
+  bottom: 27px;
   right: 170px;
 }
 .login_color:hover {
   background-color: #0c7a52;
 }
-

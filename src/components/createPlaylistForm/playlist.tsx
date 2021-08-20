@@ -10,7 +10,7 @@ const NewPlaylist: React.FC<NewPlaylistProps> = ({
   getTitleValue,
   getDescriptionValue,
   handleCreateNewPlaylist,
-  }): JSX.Element => {
+}): JSX.Element => {
   return (
     <div className={styles.container_newPlaylist}>
       <h3>Playlist</h3>

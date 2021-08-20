@@ -1,0 +1,76 @@
+:root {
+  --primary-color: #346751;
+  --contrast-color: #ffa900;
+}
+.homepage {
+  display: flex;
+  height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  font-weight: 250;
+  animation: expand 0.8s ease forwards;
+  background-color: var(--primary-color);
+  position: relative;
+  transition: all 0.8s ease-out;
+}
+.homepage_content {
+  width: 50%;
+}
+.homepage_content_inner {
+  width: 80%;
+  margin-left: 80px;
+}
+.homepage_outer_img {
+  margin: 50px;
+  width: 50%;
+  overflow: hidden;
+}
+.homepage_img {
+  width: 100%;
+  animation: slideIn 1.5s ease-in-out forwards;
+}
+.homepage_greet {
+  height: auto;
+  overflow: hidden;
+}
+.greet {
+  line-height: 28px;
+  transform: translateY(300px);
+  animation: slideUp 0.8s ease-in-out forwards 0.8s;
+}
+.title {
+  overflow: hidden;
+  height: auto;
+}
+h1 {
+  font-size: 40px;
+  color: var(--contrast-color);
+  margin-bottom: 20px;
+  transform: translateY(100px);
+  animation: slideUp 0.8s ease forwards 0.5s;
+}
+@keyframes slideIn {
+  0% {
+    transform: translateX(500px) scale(0.2);
+  }
+  100% {
+    transform: translateX(0px) scale(1);
+  }
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(300px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes expand {
+  0% {
+    transform: translateX(900px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}

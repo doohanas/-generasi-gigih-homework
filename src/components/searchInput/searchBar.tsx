@@ -8,7 +8,12 @@ interface SearchDataProps {
   onClick: () => void;
 }
 
-const SearchData: React.FC<SearchDataProps> = ({ onSubmit, placeholder, onChange, onClick }): JSX.Element => {
+const SearchData: React.FC<SearchDataProps> = ({
+  onSubmit,
+  placeholder,
+  onChange,
+  onClick,
+}): JSX.Element => {
   return (
     <>
       <form id={styles.search_form} onSubmit={onSubmit}>

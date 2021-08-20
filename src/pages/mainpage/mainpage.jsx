@@ -243,19 +243,21 @@ const Mainpage = () => {
   }, [accessToken, newPlaylist]);
 
   return (
-    <Router>
-      <div className="body">
-        <Switch>
-          <Route exact path="/create-playlist">
-            {!accessToken && <Redirect to="/" />}
-            {showTrackPage()}
-          </Route>
-          <Route exact path="/">
-            {accessToken && <Redirect to="/create-playlist" />}
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <>
+      <Router>
+        <div className="body">
+          <Switch>
+            <Route exact path="/create-playlist">
+              {!accessToken && <Redirect to="/" />}
+              {showTrackPage()}
+            </Route>
+            <Route exact path="/">
+              {accessToken && <Redirect to="/create-playlist" />}
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </>
   );
 };
 

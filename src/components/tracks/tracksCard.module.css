@@ -1,7 +1,7 @@
 .track_card {
-   background-color: #424242;
+  background-color: #424242;
   width: 250px;
-  height: 250px;
+  height: 275px;
   margin: 10px 10px;
   padding: 10px;
   text-align: center;
@@ -20,7 +20,8 @@
   border-radius: 50%;
 }
 .track_card_text {
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 20px;
   width: auto;
   height: 100px;
   margin: 5px 0px 0px;
@@ -28,7 +29,7 @@
   flex-direction: column;
 }
 .track_card_text > p {
-  padding: 0px 0px 10px;
+  padding-bottom: 5px;
   color: #fff;
 }
 .track_card_text > button {

@@ -7,7 +7,9 @@ const track = {
   uri: "trackUri",
   name: "trackName",
   album: {
-    images: [{}, {},
+    images: [
+      {},
+      {},
       {
         url: "trackImageUrl",
       },

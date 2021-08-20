@@ -8,7 +8,7 @@ import {
   REACT_APP_SCOPES,
 } from "data/spotifyAuth";
 
-import logo from"assets/logo.png"
+import logo from "assets/logo.png";
 import styles from "./header.module.css";
 
 const Header: React.FC = (): JSX.Element => {
